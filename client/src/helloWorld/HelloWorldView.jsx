@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../styles/hello-world.scss';
 
 class HelloWorldView extends React.Component {
   constructor(props){
@@ -7,7 +8,7 @@ class HelloWorldView extends React.Component {
 
   render() {
     return (
-      <div className="helloWorld">Hello World</div>
+      <div className={styles.title}>Hello World</div>
     );
   }
 }

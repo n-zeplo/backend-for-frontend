@@ -1,7 +1,4 @@
-'use strict';
-
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -22,7 +19,7 @@ module.exports = {
 
   resolve: {
     root: __dirname,
-    extensions: ['', '.webpack.js', '.js', 'jsx', '.spec.js', '.spec.js'],
+    extensions: ['', '.webpack.js', '.js', 'jsx', '.spec.js', '.spec.js']
   },
 
   module: {
@@ -35,6 +32,15 @@ module.exports = {
         'plugins': ['transform-react-jsx']
       },
       include: path.join(__dirname, 'src')
-    }],
+    },
+    {
+      test: /\.scss$/,
+      loaders: [
+        'style',
+        'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        'resolve-url',
+        'sass?sourceMap'
+      ]
+    }]
   }
 };

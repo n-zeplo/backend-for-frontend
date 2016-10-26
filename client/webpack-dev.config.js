@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -36,7 +34,7 @@ module.exports = {
 
   resolve: {
     root: __dirname,
-    extensions: ['', '.webpack.js', '.js', 'jsx', '.spec.js', '.spec.js'],
+    extensions: ['', '.webpack.js', '.js', 'jsx', '.spec.js', '.spec.js']
   },
 
   module: {
@@ -45,11 +43,20 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
       loader: 'babel',
       query: {
-        "presets": ["react", "es2015"],
-        "plugins": ["transform-react-jsx", ]
+        'presets': ['react', 'es2015'],
+        'plugins': ['transform-react-jsx']
       },
 
       include: path.join(__dirname, 'src')
-    }],
+    },
+    {
+      test: /\.scss$/,
+      loaders: [
+        'style?sourceMap',
+        'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        'resolve-url',
+        'sass?sourceMap'
+      ]
+    }]
   }
 };
